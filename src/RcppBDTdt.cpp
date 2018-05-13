@@ -301,13 +301,15 @@ Rcpp::Date Date_lastDayOfWeekBefore(boost::gregorian::date *d, int weekday, SEXP
     return Rcpp::wrap(fdab.get_date(dt));
 }
 
-RCPP_MODULE(bdtMod) {
+//comment the below section why can't through linked process.
+/*
+RCPP_MODULE(bdtDateMod) {
 
     using namespace boost::gregorian;
     using namespace Rcpp;
 
     // exposing a class (boost::gregorian::)date as "bdtDate" on the R side
-    class_<date>("bdtDate")
+    class_<bdtDate>("bdtDate")
 	
     // constructors
     .constructor("default constructor")
@@ -374,5 +376,5 @@ RCPP_MODULE(bdtMod) {
 
     ;
 
-}
+}*/
 #endif

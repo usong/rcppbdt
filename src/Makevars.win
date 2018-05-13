@@ -2,5 +2,9 @@
 CXX_STD = CXX11
 
 ## We need the headers exported via inst/include
+#reference boot_data_time library
+#need to download boost library and compile on windows platform
+#loading RcppBDT with libboot_data_time.dll 
 PKG_CPPFLAGS = -I../inst/include/
+PKG_LIBS = -LC:/Rtools/mingw_libs/lib/x64 -lboost_date_time
 

@@ -299,8 +299,15 @@ Rcpp::NumericVector cToPOSIXct(Rcpp::CharacterVector sv, std::string tz = "UTC")
 
     for (int i=0; i<n; i++) {
         const char *s = sv[i];
+        //struct tm tm;
+        //strptime(s, "%Y-%d-%m %H:%M:%S", &tm);
         struct tm tm;
-        strptime(s, "%Y-%d-%m %H:%M:%S", &tm);
+        
+        std::string ts = s ;
+        bt::ptime pt(bt::time_from_string(ts));
+        tm  = bt::to_tm( pt );
+        
+        //strptime(s, "%Y-%d-%m %H:%M:%S", &tm);
         time_t t = mktime(&tm);
         pv[i] = t;
     }

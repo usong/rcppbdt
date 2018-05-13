@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // toPOSIXct
 Rcpp::NumericVector toPOSIXct(SEXP x, std::string tz);
-RcppExport SEXP RcppBDT_toPOSIXct(SEXP xSEXP, SEXP tzSEXP) {
+RcppExport SEXP _RcppBDT_toPOSIXct(SEXP xSEXP, SEXP tzSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -20,7 +20,7 @@ END_RCPP
 }
 // charToPOSIXct
 Rcpp::NumericVector charToPOSIXct(Rcpp::CharacterVector sv, std::string tz);
-RcppExport SEXP RcppBDT_charToPOSIXct(SEXP svSEXP, SEXP tzSEXP) {
+RcppExport SEXP _RcppBDT_charToPOSIXct(SEXP svSEXP, SEXP tzSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -32,7 +32,7 @@ END_RCPP
 }
 // cToPOSIXct
 Rcpp::NumericVector cToPOSIXct(Rcpp::CharacterVector sv, std::string tz);
-RcppExport SEXP RcppBDT_cToPOSIXct(SEXP svSEXP, SEXP tzSEXP) {
+RcppExport SEXP _RcppBDT_cToPOSIXct(SEXP svSEXP, SEXP tzSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -41,4 +41,27 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(cToPOSIXct(sv, tz));
     return rcpp_result_gen;
 END_RCPP
+}
+
+RcppExport SEXP _rcpp_module_boot_bdtDdMod();
+RcppExport SEXP _rcpp_module_boot_bdtDtMod();
+RcppExport SEXP _rcpp_module_boot_bdtDuMod();
+RcppExport SEXP _rcpp_module_boot_bdtPtMod();
+RcppExport SEXP _rcpp_module_boot_bdtTzMod();
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_RcppBDT_toPOSIXct", (DL_FUNC) &_RcppBDT_toPOSIXct, 2},
+    {"_RcppBDT_charToPOSIXct", (DL_FUNC) &_RcppBDT_charToPOSIXct, 2},
+    {"_RcppBDT_cToPOSIXct", (DL_FUNC) &_RcppBDT_cToPOSIXct, 2},
+    {"_rcpp_module_boot_bdtDdMod", (DL_FUNC) &_rcpp_module_boot_bdtDdMod, 0},
+    {"_rcpp_module_boot_bdtDtMod", (DL_FUNC) &_rcpp_module_boot_bdtDtMod, 0},
+    {"_rcpp_module_boot_bdtDuMod", (DL_FUNC) &_rcpp_module_boot_bdtDuMod, 0},
+    {"_rcpp_module_boot_bdtPtMod", (DL_FUNC) &_rcpp_module_boot_bdtPtMod, 0},
+    {"_rcpp_module_boot_bdtTzMod", (DL_FUNC) &_rcpp_module_boot_bdtTzMod, 0},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_RcppBDT(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }
