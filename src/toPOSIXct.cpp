@@ -301,6 +301,7 @@ Rcpp::NumericVector cToPOSIXct(Rcpp::CharacterVector sv, std::string tz = "UTC")
         const char *s = sv[i];
         //struct tm tm;
         //strptime(s, "%Y-%d-%m %H:%M:%S", &tm);
+        //repleace strptime on windows platform 
         struct tm tm;
         
         std::string ts = s ;
